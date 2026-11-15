@@ -1,0 +1,15 @@
+# The notebook was executed with Python 3.13 and: pandas 3.1, numpy 2.5, scikit-learn 1.9, scipy 1.18, nltk 3.10, matplotlib 3.11, gradio 6.32.
+# Older minor versions (below) should also work; they were not separately tested.
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.4
+scipy>=1.11
+nltk>=3.8
+matplotlib>=3.8
+joblib>=1.3
+gradio>=5.0
+# only needed to re-run the notebook locally (Colab already has these):
+jupyter
+nbformat
+nbconvert
+ipykernel

@@ -1,0 +1,628 @@
+{
+  "dataset": {
+    "n_days": 1989,
+    "first": "2008-08-08",
+    "last": "2016-07-01",
+    "up_rate_all": 0.5354,
+    "missing_cells": 7
+  },
+  "split": {
+    "train_days": 1359,
+    "val_days": 252,
+    "test_days": 378,
+    "trainval_days": 1611
+  },
+  "sentiment": {
+    "headlines_scored": 49718,
+    "share_neg": 0.5451,
+    "share_pos": 0.2042,
+    "daily_mean_up": -0.2113,
+    "daily_mean_down": -0.2168
+  },
+  "headline_models": {
+    "Always UP": {
+      "test_acc": 0.5079365079365079,
+      "ci95": [
+        0.457711354735343,
+        0.5580019672285288
+      ],
+      "p_vs_always_up": 1.0
+    },
+    "Previous day": {
+      "test_acc": 0.4576719576719577,
+      "ci95": [
+        0.40812446517421636,
+        0.5080711510184667
+      ],
+      "p_vs_always_up": 0.1879332627414172
+    },
+    "Logistic Regression": {
+      "test_acc": 0.48677248677248675,
+      "ci95": [
+        0.43677138024141393,
+        0.5370397498187994
+      ],
+      "p_vs_always_up": 0.3019956131896606
+    },
+    "Random Forest": {
+      "test_acc": 0.4603174603174603,
+      "ci95": [
+        0.41072173726751265,
+        0.5107116529131276
+      ],
+      "p_vs_always_up": 0.050452410247217666
+    }
+  },
+  "primary": {
+    "lr": {
+      "params": "0.1",
+      "val_acc": 0.5674603174603174,
+      "accuracy": 0.48677248677248675,
+      "precision_up": 0.49698795180722893,
+      "recall_up": 0.859375,
+      "f1_up": 0.6297709923664122
+    },
+    "rf": {
+      "params": "(5, 10)",
+      "val_acc": 0.5714285714285714,
+      "accuracy": 0.4603174603174603,
+      "precision_up": 0.48013245033112584,
+      "recall_up": 0.7552083333333334,
+      "f1_up": 0.5870445344129555
+    }
+  },
+  "preferred_model": "rf",
+  "baselines": {
+    "Always UP": {
+      "accuracy": 0.5079365079365079,
+      "precision_up": 0.5079365079365079,
+      "recall_up": 1.0,
+      "f1_up": 0.6736842105263158
+    },
+    "Previous day": {
+      "accuracy": 0.4576719576719577,
+      "precision_up": 0.46596858638743455,
+      "recall_up": 0.4635416666666667,
+      "f1_up": 0.46475195822454307
+    }
+  },
+  "n_test_days": 378,
+  "fin_filter": {
+    "headlines": 49718,
+    "financial": 4831,
+    "share": 0.09716802767609317,
+    "days_with_zero_fin": 194,
+    "category_counts": {
+      "fed_rates": 137,
+      "inflation_jobs": 216,
+      "growth": 749,
+      "banks_markets": 2265,
+      "earnings_corp": 1042,
+      "trade_policy": 1215
+    }
+  },
+  "grid": [
+    {
+      "timing": "same-day headlines",
+      "features": "All news",
+      "model": "LogReg",
+      "val_acc": 0.5675,
+      "test_acc": 0.4868,
+      "ci_low": 0.4368,
+      "ci_high": 0.537,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.302
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "All news",
+      "model": "RandForest",
+      "val_acc": 0.5714,
+      "test_acc": 0.4603,
+      "ci_low": 0.4107,
+      "ci_high": 0.5107,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.0505
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "Financial news only",
+      "model": "LogReg",
+      "val_acc": 0.5476,
+      "test_acc": 0.5106,
+      "ci_low": 0.4603,
+      "ci_high": 0.5606,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "Financial news only",
+      "model": "RandForest",
+      "val_acc": 0.5476,
+      "test_acc": 0.5053,
+      "ci_low": 0.4551,
+      "ci_high": 0.5554,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "All + Financial",
+      "model": "LogReg",
+      "val_acc": 0.5556,
+      "test_acc": 0.5026,
+      "ci_low": 0.4525,
+      "ci_high": 0.5528,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.8238
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "All + Financial",
+      "model": "RandForest",
+      "val_acc": 0.5714,
+      "test_acc": 0.4603,
+      "ci_low": 0.4107,
+      "ci_high": 0.5107,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.0444
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "Market history only (no news)",
+      "model": "LogReg",
+      "val_acc": 0.5635,
+      "test_acc": 0.4921,
+      "ci_low": 0.442,
+      "ci_high": 0.5423,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.5044
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "Market history only (no news)",
+      "model": "RandForest",
+      "val_acc": 0.5635,
+      "test_acc": 0.4894,
+      "ci_low": 0.4394,
+      "ci_high": 0.5397,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.3604
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "All news + market history",
+      "model": "LogReg",
+      "val_acc": 0.5714,
+      "test_acc": 0.5053,
+      "ci_low": 0.4551,
+      "ci_high": 0.5554,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "All news + market history",
+      "model": "RandForest",
+      "val_acc": 0.5635,
+      "test_acc": 0.5079,
+      "ci_low": 0.4577,
+      "ci_high": 0.558,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "Financial + market history",
+      "model": "LogReg",
+      "val_acc": 0.5595,
+      "test_acc": 0.5026,
+      "ci_low": 0.4525,
+      "ci_high": 0.5528,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.8991
+    },
+    {
+      "timing": "same-day headlines",
+      "features": "Financial + market history",
+      "model": "RandForest",
+      "val_acc": 0.5635,
+      "test_acc": 0.5026,
+      "ci_low": 0.4525,
+      "ci_high": 0.5528,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.9219
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "All news",
+      "model": "LogReg",
+      "val_acc": 0.5516,
+      "test_acc": 0.5079,
+      "ci_low": 0.4577,
+      "ci_high": 0.558,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "All news",
+      "model": "RandForest",
+      "val_acc": 0.5635,
+      "test_acc": 0.5106,
+      "ci_low": 0.4603,
+      "ci_high": 0.5606,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "Financial news only",
+      "model": "LogReg",
+      "val_acc": 0.5595,
+      "test_acc": 0.5079,
+      "ci_low": 0.4577,
+      "ci_high": 0.558,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "Financial news only",
+      "model": "RandForest",
+      "val_acc": 0.5595,
+      "test_acc": 0.5106,
+      "ci_low": 0.4603,
+      "ci_high": 0.5606,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "All + Financial",
+      "model": "LogReg",
+      "val_acc": 0.5516,
+      "test_acc": 0.5079,
+      "ci_low": 0.4577,
+      "ci_high": 0.558,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "All + Financial",
+      "model": "RandForest",
+      "val_acc": 0.5635,
+      "test_acc": 0.5106,
+      "ci_low": 0.4603,
+      "ci_high": 0.5606,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "All news + market history",
+      "model": "LogReg",
+      "val_acc": 0.5754,
+      "test_acc": 0.4974,
+      "ci_low": 0.4472,
+      "ci_high": 0.5475,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.731
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "All news + market history",
+      "model": "RandForest",
+      "val_acc": 0.5595,
+      "test_acc": 0.4921,
+      "ci_low": 0.442,
+      "ci_high": 0.5423,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 0.2379
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "Financial + market history",
+      "model": "LogReg",
+      "val_acc": 0.5635,
+      "test_acc": 0.5079,
+      "ci_low": 0.4577,
+      "ci_high": 0.558,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    },
+    {
+      "timing": "previous-day headlines",
+      "features": "Financial + market history",
+      "model": "RandForest",
+      "val_acc": 0.5556,
+      "test_acc": 0.5106,
+      "ci_low": 0.4603,
+      "ci_high": 0.5606,
+      "always_up_on_same_days": 0.5079,
+      "test_days": 378,
+      "p_vs_always_up": 1.0
+    }
+  ],
+  "grid_summary": {
+    "n": 22,
+    "above": 5,
+    "sig_better": 0,
+    "sig_worse": 1
+  },
+  "expanding": {
+    "table": [
+      {
+        "timing": "same-day",
+        "features": "All news",
+        "pooled_acc_2010_16": 0.5312,
+        "ci_low": 0.5069,
+        "ci_high": 0.5553,
+        "always_up_acc": 0.5391,
+        "days": 1636,
+        "p_vs_always_up": 0.5344
+      },
+      {
+        "timing": "same-day",
+        "features": "Financial news only",
+        "pooled_acc_2010_16": 0.5312,
+        "ci_low": 0.5069,
+        "ci_high": 0.5553,
+        "always_up_acc": 0.5391,
+        "days": 1636,
+        "p_vs_always_up": 0.5633
+      },
+      {
+        "timing": "same-day",
+        "features": "Market history only",
+        "pooled_acc_2010_16": 0.5324,
+        "ci_low": 0.5082,
+        "ci_high": 0.5565,
+        "always_up_acc": 0.5391,
+        "days": 1636,
+        "p_vs_always_up": 0.4647
+      },
+      {
+        "timing": "previous-day",
+        "features": "All news",
+        "pooled_acc_2010_16": 0.5232,
+        "ci_low": 0.499,
+        "ci_high": 0.5473,
+        "always_up_acc": 0.5391,
+        "days": 1636,
+        "p_vs_always_up": 0.1569
+      },
+      {
+        "timing": "previous-day",
+        "features": "Financial news only",
+        "pooled_acc_2010_16": 0.5006,
+        "ci_low": 0.4764,
+        "ci_high": 0.5248,
+        "always_up_acc": 0.5391,
+        "days": 1636,
+        "p_vs_always_up": 0.0005
+      }
+    ],
+    "per_year": {
+      "same|All news": {
+        "2010": 0.5634920634920635,
+        "2011": 0.5357142857142857,
+        "2012": 0.484,
+        "2013": 0.5634920634920635,
+        "2014": 0.5674603174603174,
+        "2015": 0.45634920634920634,
+        "2016": 0.5634920634920635
+      },
+      "same|Financial news only": {
+        "2010": 0.5476190476190477,
+        "2011": 0.5277777777777778,
+        "2012": 0.508,
+        "2013": 0.5753968253968254,
+        "2014": 0.5277777777777778,
+        "2015": 0.5198412698412699,
+        "2016": 0.49206349206349204
+      },
+      "same|Market history only": {
+        "2010": 0.5753968253968254,
+        "2011": 0.5317460317460317,
+        "2012": 0.492,
+        "2013": 0.5714285714285714,
+        "2014": 0.5515873015873016,
+        "2015": 0.46825396825396826,
+        "2016": 0.5396825396825397
+      },
+      "prev|All news": {
+        "2010": 0.5436507936507936,
+        "2011": 0.503968253968254,
+        "2012": 0.524,
+        "2013": 0.5317460317460317,
+        "2014": 0.5317460317460317,
+        "2015": 0.48412698412698413,
+        "2016": 0.5634920634920635
+      },
+      "prev|Financial news only": {
+        "2010": 0.5158730158730159,
+        "2011": 0.4801587301587302,
+        "2012": 0.46,
+        "2013": 0.4722222222222222,
+        "2014": 0.5555555555555556,
+        "2015": 0.4880952380952381,
+        "2016": 0.5634920634920635
+      }
+    },
+    "p_fin_vs_all_same_day": 1.0
+  },
+  "neg_vs_pos": [
+    {
+      "features": "negative-tone features (all news)",
+      "val_acc": 0.5714,
+      "test_acc": 0.4815,
+      "ci_low": 0.4316,
+      "ci_high": 0.5318
+    },
+    {
+      "features": "positive-tone features (all news)",
+      "val_acc": 0.5516,
+      "test_acc": 0.5106,
+      "ci_low": 0.4603,
+      "ci_high": 0.5606
+    },
+    {
+      "features": "negative-tone (financial)",
+      "val_acc": 0.5516,
+      "test_acc": 0.5079,
+      "ci_low": 0.4577,
+      "ci_high": 0.558
+    },
+    {
+      "features": "positive-tone (financial)",
+      "val_acc": 0.5516,
+      "test_acc": 0.5079,
+      "ci_low": 0.4577,
+      "ci_high": 0.558
+    }
+  ],
+  "top_train_correlations": [
+    {
+      "feature": "all_pct_neg",
+      "corr_with_UP": -0.0768,
+      "p_value": 0.002
+    },
+    {
+      "feature": "all_mean",
+      "corr_with_UP": 0.0715,
+      "p_value": 0.0041
+    },
+    {
+      "feature": "all_median",
+      "corr_with_UP": 0.0658,
+      "p_value": 0.0083
+    },
+    {
+      "feature": "all_mean_pos",
+      "corr_with_UP": 0.0569,
+      "p_value": 0.0224
+    },
+    {
+      "feature": "all_mean_neg",
+      "corr_with_UP": -0.0536,
+      "p_value": 0.0313
+    },
+    {
+      "feature": "all_pct_pos",
+      "corr_with_UP": 0.0515,
+      "p_value": 0.0387
+    }
+  ],
+  "high_sentiment": {
+    "threshold": 0.281656,
+    "table": [
+      {
+        "model": "LR",
+        "days": "high-|sentiment| days",
+        "n_days": 61,
+        "model_acc": 0.4754,
+        "ci_low": 0.3553,
+        "ci_high": 0.5984,
+        "always_up_acc": 0.5738
+      },
+      {
+        "model": "LR",
+        "days": "other days",
+        "n_days": 317,
+        "model_acc": 0.489,
+        "ci_low": 0.4344,
+        "ci_high": 0.5438,
+        "always_up_acc": 0.4953
+      },
+      {
+        "model": "RF",
+        "days": "high-|sentiment| days",
+        "n_days": 61,
+        "model_acc": 0.4426,
+        "ci_low": 0.3251,
+        "ci_high": 0.567,
+        "always_up_acc": 0.5738
+      },
+      {
+        "model": "RF",
+        "days": "other days",
+        "n_days": 317,
+        "model_acc": 0.4637,
+        "ci_low": 0.4096,
+        "ci_high": 0.5187,
+        "always_up_acc": 0.4953
+      }
+    ]
+  },
+  "prev_dir_effect": {
+    "LogReg": {
+      "All + Financial": 0.5026,
+      "All news": 0.4868,
+      "All news + market history": 0.5053,
+      "Financial + market history": 0.5026,
+      "Financial news only": 0.5106,
+      "Market history only (no news)": 0.4921
+    },
+    "RandForest": {
+      "All + Financial": 0.4603,
+      "All news": 0.4603,
+      "All news + market history": 0.5079,
+      "Financial + market history": 0.5026,
+      "Financial news only": 0.5053,
+      "Market history only (no news)": 0.4894
+    }
+  },
+  "selected": {
+    "name": "Random Forest",
+    "params": "(5, 10)",
+    "val_acc": 0.5714285714285714,
+    "accuracy": 0.4603174603174603,
+    "precision_up": 0.48013245033112584,
+    "recall_up": 0.7552083333333334,
+    "f1_up": 0.5870445344129555,
+    "confusion": [
+      [
+        29,
+        157
+      ],
+      [
+        47,
+        145
+      ]
+    ],
+    "pred_up_share": 0.798941798941799
+  },
+  "errors": {
+    "wrong": 204,
+    "worst_dates": [
+      "2016-01-13",
+      "2015-08-21",
+      "2016-02-01",
+      "2015-03-25"
+    ]
+  }
+}
