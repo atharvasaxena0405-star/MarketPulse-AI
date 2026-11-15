@@ -1,7 +1,7 @@
 # 📈 MarketPulse AI — Can News Sentiment Really Predict the Stock Market?
 
 **Veritas AI International High School Hackathon 2026 · Track: AI + Finance · Project 4.2.4 "News Headlines and the Stock Market"**
-**Team:** _[names, schools, emails — fill in]_
+**Team:** Atharva Saxena, West Forsyth High School, atharvasaxena0405@gmail.com
 
 > **This project is a prototype and is not financial advice.**
 
